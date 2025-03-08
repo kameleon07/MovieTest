@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\movieapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\movieapi.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\movieapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\movieapi.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|c:\\users\\xiame\\documents\\github\\movieapi\\movieapi\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84A6440B-74D7-4438-876B-2DD4A5E69726}|MovieApi\\MovieApi.csproj|solutionrelative:movieapi\\controllers\\moviecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MovieApi",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\MovieApi.csproj",
+              "RelativeDocumentMoniker": "MovieApi\\MovieApi.csproj",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\MovieApi.csproj",
+              "RelativeToolTip": "MovieApi\\MovieApi.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-08T21:34:33.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\appsettings.json",
+              "RelativeDocumentMoniker": "MovieApi\\appsettings.json",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\appsettings.json",
+              "RelativeToolTip": "MovieApi\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-08T21:33:16.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "MovieApi\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "MovieApi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAUAAAAAAAAAAADwvxUAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-08T21:28:28.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Program.cs",
+              "RelativeDocumentMoniker": "MovieApi\\Program.cs",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Program.cs",
+              "RelativeToolTip": "MovieApi\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwCQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T21:25:22.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MovieController.cs",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Controllers\\MovieController.cs",
+              "RelativeDocumentMoniker": "MovieApi\\Controllers\\MovieController.cs",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\Controllers\\MovieController.cs",
+              "RelativeToolTip": "MovieApi\\Controllers\\MovieController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-08T21:22:23.035Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MovieApi.http",
+              "DocumentMoniker": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\MovieApi.http",
+              "RelativeDocumentMoniker": "MovieApi\\MovieApi.http",
+              "ToolTip": "C:\\Users\\xiame\\Documents\\GitHub\\MovieApi\\MovieApi\\MovieApi.http",
+              "RelativeToolTip": "MovieApi\\MovieApi.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-03-08T21:22:07.862Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

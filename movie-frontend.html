@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .search-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-row > div {
+            flex: 1;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .movies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .movie-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+        .movie-poster {
+            height: 350px;
+            width: 100%;
+            background-color: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+        }
+        .movie-info {
+            padding: 15px;
+        }
+        .movie-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        .movie-meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .movie-genre {
+            font-size: 14px;
+            color: #3498db;
+        }
+        .movie-overview {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-top: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        .pagination button {
+            min-width: 40px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-size: 18px;
+            color: #666;
+        }
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            font-size: 18px;
+            color: #666;
+            background: white;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Database</h1>
+        
+        <div class="search-container">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" placeholder="Search by title...">
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre</label>
+                    <select id="genre">
+                        <option value="">All Genres</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">Language</label>
+                    <select id="language">
+                        <option value="">All Languages</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="sort">Sort By</label>
+                    <select id="sort">
+                        <option value="Title">Title</option>
+                        <option value="ReleaseDate">Release Date</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="order">Order</label>
+                    <select id="order">
+                        <option value="true">Ascending</option>
+                        <option value="false">Descending</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pageSize">Results Per Page</label>
+                    <select id="pageSize">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="searchBtn">Search</button>
+        </div>
+        
+        <div id="results" class="movies-container">
+
+        </div>
+        
+        <div id="pagination" class="pagination"></div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:5118/api/Movies';
+        
+        let currentPage = 1;
+        let totalPages = 1;
+        
+        const titleInput = document.getElementById('title');
+        const genreSelect = document.getElementById('genre');
+        const languageSelect = document.getElementById('language');
+        const sortSelect = document.getElementById('sort');
+        const orderSelect = document.getElementById('order');
+        const pageSizeSelect = document.getElementById('pageSize');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsContainer = document.getElementById('results');
+        const paginationContainer = document.getElementById('pagination');
+        
+        //page content gets initialized here 
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadFilterOptions();
+            
+            //initial movie search on a page load
+            searchMovies();
+            
+            //searh functionality on button click
+            searchBtn.addEventListener('click', () => {
+                currentPage = 1;
+                searchMovies();
+            });
+            
+            //search titles by hitting 'enter'
+            titleInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    currentPage = 1;
+                    searchMovies();
+                }
+            });
+        });
+        
+        async function loadFilterOptions() {
+            try {
+                var genresResponse = await fetch(`${API_URL}/genres`);
+
+                if (genresResponse.ok) {
+                    var genres = await genresResponse.json();
+
+                    genres.forEach(genre => {
+                        const option = document.createElement('option');
+                        option.value = genre;
+                        option.textContent = genre;
+                        genreSelect.appendChild(option);
+                    });
+                }
+                
+                var languagesResponse = await fetch(`${API_URL}/languages`);
+
+                if (languagesResponse.ok) {
+                    var languages = await languagesResponse.json();
+
+                    languages.forEach(language => {
+                        const option = document.createElement('option');
+                        option.value = language;
+                        option.textContent = language;
+                        languageSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading filter options:', error);
+            }
+        }
+        
+        async function searchMovies() {
+            showLoading();
+            
+            try {
+                const title = titleInput.value.trim();
+                const genre = genreSelect.value;
+                const language = languageSelect.value;
+                const sortBy = sortSelect.value;
+                const isAscending = orderSelect.value;
+                const pageSize = pageSizeSelect.value;
+                
+                const queryParams = new URLSearchParams({
+                    page: currentPage,
+                    pageSize: pageSize
+                });
+                
+                if(title){queryParams.append('title', title);}                                                
+                if(genre){queryParams.append('genre', genre);}
+                if(language){queryParams.append('language', language);}
+                if(sortBy){queryParams.append('sortBy', sortBy);}
+                queryParams.append('isAscending', isAscending);
+                
+                var response = await fetch(`${API_URL}?${queryParams.toString()}`);
+                
+                if (response.ok) {
+                    var data = await response.json();
+                    
+                    displayMovies(data.movies);
+                    totalPages = data.totalPages;
+                    updatePagination();
+                } else {
+                    showError('Failed to fetch movies');
+                }
+            } catch (error) {
+                console.error('Error searching movies:', error);
+                showError('An error occurred while fetching data');
+            }
+        }
+        
+        function displayMovies(movies) {
+            resultsContainer.innerHTML = '';
+            
+            if (!movies || movies.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No movies found matching your criteria.</div>';
+                return;
+            }
+            
+            movies.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                
+                const releaseDate = new Date(movie.releaseDate).toLocaleDateString();
+                
+                card.innerHTML = `
+                    <div class="movie-poster" style="background-image: url('${movie.posterUrl}');"></div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">${movie.title}</h3>
+                        <div class="movie-meta">
+                            <span>${releaseDate}</span> | 
+                            <span>⭐ ${movie.voteAverage}/10</span>
+                        </div>
+                        <div class="movie-genre">${movie.genre || 'Unknown Genre'}</div>
+                        <div class="movie-overview">${movie.overview || 'No description available.'}</div>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(card);
+            });
+        }
+        
+        function updatePagination() {
+            paginationContainer.innerHTML = '';
+            
+            //prev btn
+            const prevBtn = document.createElement('button');
+
+            prevBtn.textContent = '←';
+            prevBtn.disabled = currentPage <= 1;
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    searchMovies();
+                }
+            });
+            
+            paginationContainer.appendChild(prevBtn);
+            
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, currentPage + 2);
+            
+            //this shows up to 5 pages when available
+            if (endPage - startPage + 1 < 5 && totalPages > 5) {
+                if (startPage === 1) {
+                    endPage = Math.min(5, totalPages);
+                } else if (endPage === totalPages) {
+                    startPage = Math.max(1, totalPages - 4);
+                }
+            }
+            
+            //page btn
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+
+                pageBtn.textContent = i;
+                pageBtn.className = i === currentPage ? 'active' : '';
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    searchMovies();
+                });
+
+                paginationContainer.appendChild(pageBtn);
+            }
+            
+            //next btn
+            const nextBtn = document.createElement('button');
+
+            nextBtn.textContent = '→';
+            nextBtn.disabled = currentPage >= totalPages;
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    searchMovies();
+                }
+            });
+
+            paginationContainer.appendChild(nextBtn);
+        }
+        
+        function showLoading() {
+            resultsContainer.innerHTML = '<div class="loading">Loading movies...</div>';
+        }
+        
+        function showError(message) {
+            resultsContainer.innerHTML = `<div class="no-results">${message}</div>`;
+        }
+    </script>
+</body>
+</html>
