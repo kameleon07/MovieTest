@@ -8,7 +8,7 @@
 ### Running the Application
 
 1. Clone or download this repository
-2. Open a terminal in the project (MovieApi\MovieApi) directory
+2. Open a terminal in the project (\GitHub\MovieApi\MovieApi) directory
 3. Run the .NET project:
    ```
    dotnet run
