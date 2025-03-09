@@ -19,7 +19,12 @@
 
 ### Deployments and Pipelines
 
-For lets say azure pipelines deployment, can add a 'azure-pipelines-yaml' file that would install the .NET sdk
+For azure or any other pipelines deployment, we can add a 'azure-pipelines-yaml' file that would install the .NET sdk
 build the solution, publish the api etc.
 
 Could also add a dockerfile to containeraize my app (not done much of that before :)
+
+### Notes*
+
+Looking at the https://www.kaggle.com/datasets/disham993/9000-movies-dataset database, the data provided contains no actor entries, 
+so filter by actor functionality was replaced with the language filter.
